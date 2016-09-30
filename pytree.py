@@ -1,11 +1,19 @@
-#!/usr/bin/env python3
-import subprocess
-import sys
+from os import walk, sep
+from os.path import basename, isdir
+from sys import argv
 
-
-# YOUR CODE GOES here
-
-
+def tree(startpath):
+    for root, subdirs, files in walk(startpath):
+        level = root.replace(startpath, '').count(sep)
+        indent = '  | ' * (level-1) + '  ├── '
+        print ("%s%s/" % (indent, basename(root)))
+        subindent = '  | ' * (level) + '  └──  '
+        for f in files:
+            print ("%s%s" % (subindent, f))
+            
 if __name__ == '__main__':
-    # just for demo
-    subprocess.run(['tree'] + sys.argv[1:])
+    if len(sys.argv) == 0:
+        print('.')
+        tree(os.getcwd)
+    else:
+        tree(os.getcwd)
