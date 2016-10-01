@@ -17,11 +17,11 @@ def tree(startpath):
                 print("%s%s" % (subindent_1, j))
 
 if __name__ == '__main__':
-    if len(sys.argv) == 1:
-        print('.')
-        tree('.')
-        print()
-    elif len(sys.argv) == 2:
-        print(sys.argv[1])
-        tree(sys.argv[1])
-        print()
+    if (len(sys.argv) == 1):
+        path = '.'
+    elif (len(sys.argv) == 2):
+        path = sys.argv[1]
+    else:
+        print('Invalid arguments.')
+    tree(path)
+    print()
