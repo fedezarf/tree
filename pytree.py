@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+import subprocess
 from os import walk, sep
 from os.path import basename, isdir
 import sys
