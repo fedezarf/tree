@@ -4,7 +4,6 @@ import sys
 
 def tree(startpath):
     
-    
     for root, subdirs, files in walk(startpath):
         level = root.replace(startpath, '').count(sep)
         indent = '  | ' * (level - 1) + '  ├── '
@@ -18,10 +17,11 @@ def tree(startpath):
                 print("%s%s" % (subindent_1, j))
 
 if __name__ == '__main__':
-    
     if len(sys.argv) == 1:
         print('.')
-        tree(os.getcwd)
+        tree('.')
+        print()
     elif len(sys.argv) == 2:
         print(sys.argv[1])
         tree(sys.argv[1])
+        print()
