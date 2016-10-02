@@ -3,6 +3,7 @@
 import sys
 import os
 import re
+import subprocess
 
 def print_tree(path, indent=""):
     
@@ -15,13 +16,11 @@ def print_tree(path, indent=""):
         else:
             print indent + '├── ' + files[i]
             
-            
         if os.path.isdir(fullpath):
             if i == len(files) - 1:
-                print_tree(fullpath, indent+ '    ')
+                print_tree(fullpath, indent + '    ')
             else:
-                print_tree(fullpath, indent+ '|    ')
-
+                print_tree(fullpath, indent + '|    ')
                 
 if len(sys.argv) == 1:
     cwd = os.getcwd()
