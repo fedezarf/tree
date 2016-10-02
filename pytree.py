@@ -35,9 +35,9 @@ def print_tree(path, indent=""):
         if os.path.isdir(fullpath):
             c_dir += 1 
             if i == len(files) - 1:
-                print_tree(fullpath, indent+ "    ")
+                print_tree(fullpath, indent + "    ")
             else:
-                print_tree(fullpath, indent+ "│   ")
+                print_tree(fullpath, indent + "│   ")
 
 if len(sys.argv) == 1:
     cwd = os.getcwd()
@@ -48,4 +48,5 @@ else:
     print(cwd)
     print_tree(cwd)
 
+print()
 print(str(c_dir) + (" directories, " if c_dir != 1 else " directorie, ") + str(c_file) + (" files" if c_file != 1 else " files"))
