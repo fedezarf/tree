@@ -41,4 +41,4 @@ else:
     print(cwd)
     print_tree(cwd)
 
-print("\n" + str(c_dir) + " directories, " + str(c_file) + " files")
+print(str(c_dir) + (" directories, " if c_dir != 1 else " directorie, ") + str(c_file) + (" files" if c_file != 1 else " files"))
