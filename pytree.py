@@ -1,30 +1,33 @@
 #!/usr/bin/env python3
 
-import subprocess
-from os import walk, sep
-from os.path import basename, isdir
 import sys
+import os
+import re
 
-def tree(startpath):
+def print_tree(path, indent=""):
     
-    for root, subdirs, files in walk(startpath):
-        level = root.replace(startpath, '').count(sep)
-        indent = '  | ' * (level - 1) + '  ├── '
-        print("%s%s/" % (indent, basename(root)))
-        subindent_1 = '  | ' * (level) + '  ├──  '
-        subindent_2 = '  | ' * (level) + '  └──  '
-        for i, j in enumerate(files):
-            if (i == len(files) - 1):
-                print("%s%s" % (subindent_2, j))
+    files = os.listdir(path)
+    for i in range(0, len(files)):
+        fullpath = path + "/" + files[i]
+        
+        if i == len(files) - 1:
+            print indent + '└──' + files[i]
+        else:
+            print indent + '├── ' + files[i]
+            
+            
+        if os.path.isdir(fullpath):
+            if i == len(files) - 1:
+                print_tree(fullpath, indent+ '    ')
             else:
-                print("%s%s" % (subindent_1, j))
+                print_tree(fullpath, indent+ '|    ')
 
-if __name__ == '__main__':
-    if (len(sys.argv) == 1):
-        path = '.'
-    elif (len(sys.argv) == 2):
-        path = sys.argv[1]
-    else:
-        print('Invalid arguments.')
-    tree(path)
-    print()
+                
+if len(sys.argv) == 1:
+    cwd = os.getcwd()
+    print(".")
+    print_tree(cwd)
+else:
+    cwd = sys.argv[1]
+    print(cwd)
+    print_tree(cwd)
