@@ -45,7 +45,7 @@ def print_tree(path, indent=""):
 def g_update(f):
     global c_file
     if os.path.isfile(f):
-        c_file +=1
+        c_file += 1
 
 if len(sys.argv) == 1:
     cwd = os.getcwd()
