@@ -1,7 +1,7 @@
+#!/usr/bin/env python3
 import sys
 import os
 import re
-import subprocess
 
 c_dir = 0
 c_file = 0
